@@ -1,0 +1,157 @@
+<template>
+    <template if:true={isLoading}>
+        <lightning-spinner class="spinner-container" alternative-text="Loading..." variant="brand">
+        </lightning-spinner>
+        <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+    </template>
+
+    <div class="footer-background slds-grid slds-grid_vertical">
+        <div class="text-center footer-padding">
+            <div class="slds-col footer-margin">
+                <span class="footer-heading">{labels.Explora_Title}</span>
+            </div>
+            <div class="slds-col footer-margin">
+                <span class="footer-links">
+                    <a href="#">{labels.Home}</a>
+                    <a href="#">{labels.About}</a>
+                    <a href="#">{labels.News}</a>
+                    <a href="#">{labels.Privacy_Policy}</a>
+                    <a href="#">{labels.Blog}</a>
+                    <a onclick={openModal}>{labels.Contact_Us}</a>
+                </span>
+            </div>
+            <div class="slds-col footer-margin">
+                <span>
+                    <ul class="footer-icons">
+                        <template for:each={socialLinks} for:item="item">
+                            <li key={item.type}>
+                                <a href={item.link} target="_blank" class="link">
+                                    <img src={item.icon} alt={item.type} class="icon-css"/>
+                                <span>{item.label}</span>
+                                </a>
+                            </li>
+                        </template>
+                    </ul>
+                </span>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal to create Lead for Guest Users -->
+    <template if:true={isGuestUser}>
+        <template if:true={isModalOpen}>
+            <div class="slds-modal slds-fade-in-open slds-backdrop">
+                <div class="slds-modal__container">
+                    <div class="slds-modal__content modalStyle">
+
+                        <div class="close-btn">
+                            <button class="slds-button slds-button_icon slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                                <lightning-icon icon-name="utility:close"
+                                alternative-text="close"
+                                variant="inverse"
+                                size="x-small" ></lightning-icon>
+                                <span class="slds-assistive-text">{labels.Close}</span>
+                            </button>
+                        </div>
+                        
+                        <div class="leadContentStyle">
+
+                            <div class="slds-grid slds-wrap">
+                                <div class="slds-col slds-size_2-of-2 lead-heading">
+                                    <div class="modal-heading">{labels.Contact_Form}</div>
+                                </div>
+                                
+                                <div class="slds-col slds-size_1-of-2 input-padding-right">
+                                    <label class="input-labels required">{labels.First_Name}</label>
+                                    <lightning-input type="text" class="validate" max-length ="40" data-id="inputFirstName" variant="label-hidden" onchange={addLeadDataHandler} required></lightning-input>
+                                </div>
+
+                                <div class="slds-col slds-size_1-of-2 input-padding-left">
+                                    <label class="input-labels required">{labels.Last_Name}</label>
+                                    <lightning-input type="text" class="validate" max-length ="40" data-id="inputLastName" variant="label-hidden" onchange={addLeadDataHandler} required></lightning-input>
+                                </div>
+
+                                <div class="slds-col slds-size_1-of-2 input-padding-right">
+                                    <label class="input-labels required">{labels.Email}</label>
+                                    <lightning-input type="email" class="validate" data-id="inputEmail" variant="label-hidden" pattern=".+@.+?\..+" onchange={addLeadDataHandler} required></lightning-input>
+                                </div>
+
+                                <div class="slds-col slds-size_1-of-2 input-padding-left">
+                                    <label class="input-labels required">{labels.Company_Name}</label>
+                                    <lightning-input type="text" class="validate"  max-length ="40" data-id="inputCompanyName" variant="label-hidden" onchange={addLeadDataHandler} required></lightning-input>
+                                </div>
+
+                                <div class="slds-col slds-size_2-of-2">
+                                    <label class="input-labels required">{labels.Comments}</label>
+                                    <lightning-textarea type="text" class="validate"  max-length ="255" data-id="inputComment" variant="label-hidden" onchange={addLeadDataHandler} required></lightning-textarea>
+                                </div>
+
+                                <div class="slds-col slds-size_2-of-2">
+                                    <button class="btn" onclick={handleSubmitLead}>{labels.Submit}</button>
+                                </div>
+                                
+                            </div>
+
+                        </div>
+                    
+                    </div>
+                </div>
+            </div>
+        </template>
+    </template>
+
+    <!-- Modal To Create Case for Logged In Users -->
+    <template if:false={isGuestUser}>
+        <template if:true={isModalOpen}>
+            <div class="slds-modal slds-fade-in-open slds-backdrop">
+                <div class="slds-modal__container">
+                    <div class="slds-modal__content modalStyle">
+
+                        <div class="close-btn">
+                            <button class="slds-button slds-button_icon slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                                <lightning-icon icon-name="utility:close"
+                                alternative-text="close"
+                                variant="inverse"
+                                size="x-small" ></lightning-icon>
+                                <span class="slds-assistive-text">{labels.Close}</span>
+                            </button>
+                        </div>
+                    
+                        <div class="contentStyle">
+
+                            <div class="slds-grid slds-wrap">
+                                <div class="slds-col slds-size_1-of-2">
+                                    <div class="modal-heading">{labels.Contact_Info}</div>
+                                    <div class="contact-info">
+                                        <a href={phoneLink} class="contact-display">
+                                            <lightning-icon icon-name="utility:dialing" alternative-text="dialing!" size="small" title="dialing"
+                                                class="slds-var-m-right_small">
+                                            </lightning-icon>
+                                            <div class="contact-links">{ABOUT_COMPANY.PHONE}</div>
+                                        </a>
+                                    </div>
+                                    <div class="contact-info">
+                                        <a href={emailLink} class="contact-display">
+                                            <lightning-icon icon-name="utility:email" alternative-text="email!" size="small"
+                                                title="email" class="slds-var-m-right_small">
+                                            </lightning-icon>
+                                            <div class="contact-links">{ABOUT_COMPANY.EMAIL}</div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning-textarea type="text" placeholder={labels.Enter_Your_Message} class="validate commentStyle" pattern=".+@.+?\..+" data-id="inputComment" variant="label-hidden" onchange={addCaseDataHandler} required></lightning-textarea>
+                                    <button class="btn" onclick={handleSubmitCase}>{labels.Submit}</button>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </template>
+    </template>
+</template>

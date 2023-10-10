@@ -1,0 +1,189 @@
+.spinner-container{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999; /* Adjust the z-index value if necessary */
+}
+
+.content-container{
+    background-color: #1a1819;
+}
+
+.image{
+    height: 50%;
+    width: 50%;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0 30px 0;
+}
+
+.registration-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0px 20px 0;
+    height: 44vw
+}
+
+.reg-form{
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+    background: #252526; /*#1f1f1f*/
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.199);
+    border-top-left-radius: 10% 50%;
+    border-bottom-left-radius: 10% 50%;
+    height: 44vw;
+}
+
+.input-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.input{
+    width: 100%;
+}
+
+.error-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ff0033;
+    margin-bottom: 20px;
+    border-style: solid;
+    border-color: #fff;
+    border-radius: 0.5rem;
+    animation: slide 1s;
+}
+
+.error-message{
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 15px;
+    letter-spacing: 1px;
+    line-height: 1.8;
+    font-weight: 400;
+    color: #fff;
+    padding: 5px;
+}
+
+.input-labels{
+    font-size: 13px;
+    color: #fff;
+}
+
+.required:after {
+    content:"*";
+    color: red;
+}
+
+.strength-indicator {
+    display: flex;
+    width: 100%;
+    height: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+.strength-bar1 {
+    height: 100%;
+    width: 33%;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.strength-bar2 {
+    height: 100%;
+    width: 33%;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.strength-bar3 {
+    height: 100%;
+    width: 33%;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.green{
+    background-color: green;
+}
+
+.yellow{
+    background-color: yellow;
+}
+
+.red{
+    background-color: red;
+}
+
+.input-padding-right{
+    padding-right: 15px;
+}
+
+.input-padding-left{
+    padding-left: 15px;
+}
+
+.register-button{ 
+    border: none;
+    border-radius: 1.5rem;
+    background: #1a1819;
+    color: #fff;
+    font-weight: 600;
+    padding: 2%;
+    width: 30%;
+    align-self: end;
+}
+
+.register-data{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.store-title{
+    font-size: 30px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.login-button{
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    width: 40%;
+    background: #f8f9fa;
+    font-weight: bold;
+    color: #383d41;
+    margin-top: 20%;
+    margin-bottom: 3%;
+    cursor: pointer;
+}
+
+@keyframes slide{
+    0%{margin-left:-800px;}
+    20%{margin-left:-800px;}
+    35%{margin-left:0px;}
+    100%{margin-left:0px;}
+}

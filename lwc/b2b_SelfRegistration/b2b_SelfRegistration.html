@@ -1,0 +1,86 @@
+<template>
+    <template if:true={isLoading}>
+        <lightning-spinner class="spinner-container" alternative-text="Loading..." variant="brand">
+        </lightning-spinner>
+        <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+    </template>
+
+    <div class="slds-grid slds-wrap content-container">
+        <div class="slds-col slds-size_1-of-2 image-container">
+            <div class="register-data">
+                <img src={cycleGifForRegistrationPage} class="image" alt="Bicycle - GIF Animaion 2"/>
+                <div class="store-title">
+                    {labels.Explora_Title}
+                </div>
+                <button onclick={goToLogin} class="login-button">{labels.Account_Exist}</button>
+            </div>
+        </div>
+        <div class="slds-col slds-size_1-of-2 registration-container">
+            <div class="form-container">
+                <div class="input-container">
+                    <div if:true={errorMessage} class="error-container">
+                        <div class="error-message">
+                            {errorMessage}
+                        </div>
+                        <div>
+                            <button class="slds-button slds-button_icon slds-button_icon-inverse" title="Close" onclick={closeErrorMessage}>
+                                <lightning-icon icon-name="utility:close"
+                                alternative-text="close"
+                                variant="inverse"
+                                size="x-small" ></lightning-icon>
+                                <span class="slds-assistive-text">{labels.Close}</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="slds-grid slds-wrap reg-form">
+                        <div class="slds-col slds-size_1-of-2 input-padding-right">
+                            <label class="input-labels required">{labels.First_Name}</label>
+                            <lightning-input type="text" class="validate" max-length ="40" data-id="firstName" variant="label-hidden" onchange={handleUserDetails} required></lightning-input>
+                        </div>
+                        
+                        <div class="slds-col slds-size_1-of-2 input-padding-left">
+                            <label class="input-labels required">{labels.Last_Name}</label>
+                            <lightning-input type="text" class="validate" max-length ="40" data-id="lastName" variant="label-hidden" onchange={handleUserDetails} required></lightning-input>
+                        </div>
+                    </div>
+
+                    <div class="input">
+                        <label class="input-labels required">{labels.Email}</label>
+                        <lightning-input type="email" class="validate" pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$" data-id="email" variant="label-hidden" onchange={handleUserDetails} required></lightning-input>
+                    </div>
+                   
+                    <div class="input">
+                        <label class="input-labels required">{labels.Phone}</label>
+                        <lightning-input type="tel" class="validate" data-id="phone" variant="label-hidden" pattern="(\+1)?[0-9]{9,10}" onchange={handleUserDetails} required></lightning-input>
+                    </div>
+                
+                    <div class="input">
+                        <label class="input-labels required">
+                            {labels.Password}
+                            <lightning-helptext content={labels.Pass_ToolTip}></lightning-helptext>
+                        </label>
+                        
+                        <lightning-input type="password" class="validate" data-id="password" variant="label-hidden" pattern ="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$" onchange={checkPasswordStrength} required></lightning-input>
+                        <template if:true={isPasswordExist}>
+                            <div class="strength-indicator">
+                                <div class={passStrengthBar1}></div>
+                                <div class={passStrengthBar2}></div>
+                                <div class={passStrengthBar3}></div>
+                            </div>
+                        </template>
+                        
+                    </div>
+            
+                    <div class="input">
+                        <label class="input-labels required">{labels.Confirm_Password}</label>
+                        <lightning-input type="password" class="validate" data-id="confirmPassword" variant="label-hidden" pattern ="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$" onchange={handleUserDetails} required></lightning-input>
+                    </div>
+                    
+                    <button class="register-button" onclick={register}>{labels.Register}</button>
+                
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</template>

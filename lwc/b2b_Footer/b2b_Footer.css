@@ -1,0 +1,138 @@
+.spinner-container{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999; /* Adjust the z-index value if necessary */
+}
+
+.footer-background{
+    background: #121212;
+}
+
+.footer-heading{
+    font-size: 30px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.footer-links a{
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    font-weight: normal;
+    
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0 22px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+
+.text-center{
+    text-align: center !important;
+}
+
+.footer-margin{
+    margin-bottom: 30px;
+}
+
+.footer-padding{
+    padding: 2em 0;
+}
+
+.footer-icons li{
+    list-style: none;
+    margin: 0 20px 0 0;
+    display: inline-block;
+}
+
+.icon-css{
+    height: 40px;
+    width: 40px;
+    display: block;
+    border-radius: 50%;
+    position: relative;
+}
+
+.modalStyle{
+    background-color: #292d33;
+}
+
+.contentStyle{
+    padding: 60px 46px 60px 60px;
+}
+
+.leadContentStyle{
+    padding: 10px 46px 30px 60px;
+}
+
+.modal-heading{
+    font-size: 1.875rem;
+    line-height: 1.2;
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.lead-heading{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 15px;
+}
+
+.contact-info{
+    margin: 12px auto 0 0;
+}
+
+.commentStyle{
+    margin-bottom: 0;
+}
+
+.contact-links{
+    border-style: none;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    font-weight: 400;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.input-labels{
+    color: #fff;
+}
+
+.required:after {
+    content:"*";
+    color: red;
+}
+
+.contact-display{
+    display: flex;
+}
+
+.input-padding-right{
+    padding-right: 15px;
+}
+
+.input-padding-left{
+    padding-left: 15px;
+}
+
+.btn{
+    text-transform: uppercase;
+    background-image: none;
+    border-style: none;
+    height: 30px;
+    width: 100%;
+    letter-spacing: 2px;
+    font-weight: 700;
+    color: #ffffff !important;
+    background-color: #f26658 !important;
+    border-radius: 4px;
+}
+
+.close-btn{
+    text-align: right;
+}

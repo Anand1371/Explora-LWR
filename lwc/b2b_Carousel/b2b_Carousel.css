@@ -1,0 +1,26 @@
+.carousel {
+    background-color: #111318;
+}
+
+.carousel-items {
+    display: flex;
+    justify-content: end;
+    align-items: right;
+    overflow: hidden;
+}
+
+.text{
+    font-family: Montserrat;
+    font-size: 33px;
+    color: #fff;
+    padding-top: 20vh;
+    font-size: 33px;
+    animation: slide 5s infinite;
+}
+
+@keyframes slide{
+    0%{margin-left:-800px;}
+    20%{margin-left:-800px;}
+    35%{margin-left:0px;}
+    100%{margin-left:0px;}
+}
